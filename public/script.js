@@ -16,24 +16,27 @@ function addTaskToList(taskName, initialElapsedTime) {
 
   let elapsedTime = initialElapsedTime;
 
-  const startBtn = document.createElement("button");
-  startBtn.textContent = "Avvia";
-  let timer;
-  startBtn.addEventListener("click", function() {
-    timer = setInterval(function() {
-      elapsedTime += 1000;
-      taskLabel.textContent = `${taskName} - ${formatTime(elapsedTime)}`;
-    }, 1000);
-  });
-  listItem.appendChild(startBtn);
+const startBtn = document.createElement("button");
+startBtn.textContent = "Avvia";
+let timer;
+let startTime;
 
-  const stopBtn = document.createElement("button");
-  stopBtn.textContent = "Ferma";
-  stopBtn.addEventListener("click", function() {
-      clearInterval(timer);
-      localStorage.setItem(taskName, elapsedTime);
-  });
-  listItem.appendChild(stopBtn);
+startBtn.addEventListener("click", function() {
+  startTime = Date.now() - elapsedTime;
+  timer = setInterval(function() {
+    elapsedTime = Date.now() - startTime;
+    taskLabel.textContent = `${taskName} - ${formatTime(elapsedTime)}`;
+  }, 1000);
+});
+listItem.appendChild(startBtn);
+
+const stopBtn = document.createElement("button");
+stopBtn.textContent = "Ferma";
+stopBtn.addEventListener("click", function() {
+  clearInterval(timer);
+  localStorage.setItem(taskName, elapsedTime);
+});
+listItem.appendChild(stopBtn);
 
   const deleteBtn = document.createElement("button");
   deleteBtn.textContent = "Elimina";
