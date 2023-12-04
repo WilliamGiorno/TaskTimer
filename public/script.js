@@ -17,7 +17,7 @@ function addTaskToList(taskName, initialElapsedTime) {
   let elapsedTime = initialElapsedTime;
 
 const startBtn = document.createElement("button");
-startBtn.textContent = "Avvia";
+startBtn.textContent = "Start";
 let timer;
 let startTime;
 
@@ -31,7 +31,7 @@ startBtn.addEventListener("click", function() {
 listItem.appendChild(startBtn);
 
 const stopBtn = document.createElement("button");
-stopBtn.textContent = "Ferma";
+stopBtn.textContent = "Stop";
 stopBtn.addEventListener("click", function() {
   clearInterval(timer);
   localStorage.setItem(taskName, elapsedTime);
@@ -39,7 +39,7 @@ stopBtn.addEventListener("click", function() {
 listItem.appendChild(stopBtn);
 
   const deleteBtn = document.createElement("button");
-  deleteBtn.textContent = "Elimina";
+  deleteBtn.textContent = "Delete";
   deleteBtn.classList.add("delete");
   deleteBtn.addEventListener("click", function() {
       localStorage.removeItem(taskName);
