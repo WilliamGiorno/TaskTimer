@@ -21,6 +21,7 @@ This web application allows users to keep track of the time spent on specific ta
 3. Click "Start" to start the timer for a specific task.
 4. Click "Stop" to stop the timer for a specific task.
 5. Click "Delete" to delete a specific task.
+6. Go to https://timetracker-eed5d.web.app/
 
 ## License
 
