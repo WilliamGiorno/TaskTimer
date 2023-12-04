@@ -20,10 +20,10 @@ function addTaskToList(taskName, initialElapsedTime) {
   startBtn.textContent = "Avvia";
   let timer;
   startBtn.addEventListener("click", function() {
-      timer = setInterval(function() {
-          elapsedTime += 1000;
-          taskLabel.textContent = `${taskName} - ${elapsedTime / 1000} s`;
-      }, 1000);
+    timer = setInterval(function() {
+      elapsedTime += 1000;
+      taskLabel.textContent = `${taskName} - ${formatTime(elapsedTime)}`;
+    }, 1000);
   });
   listItem.appendChild(startBtn);
 
@@ -53,6 +53,17 @@ function loadTasksFromLocalStorage() {
       const elapsedTime = parseInt(localStorage.getItem(taskName), 10);
       addTaskToList(taskName, elapsedTime);
   }
+}
+
+function formatTime(ms) {
+  let seconds = Math.floor(ms / 1000);
+  let minutes = Math.floor(seconds / 60);
+  let hours = Math.floor(minutes / 60);
+
+  seconds = seconds % 60;
+  minutes = minutes % 60;
+
+  return `${hours}h ${minutes}m ${seconds}s`;
 }
 
 loadTasksFromLocalStorage();
